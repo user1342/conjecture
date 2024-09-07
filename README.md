@@ -14,10 +14,20 @@ Conjecture is a tool designed to evaluate whether specific data points are likel
 
 # ⚙️ Setup
 ## System Requirements
-Conjecture is compatible with most modern systems. It requires Python 3.6 or higher.
+The recommended hardware setup includes:
 
-## Dependencies
-Install the required Python packages using:
+- Minimum 16GB of RAM.
+- Nvidia GPU with at least 4GB of VRAM for enhanced performance.
+
+Tested on Windows 11. Should be compatible with other Unix-like systems as well.
+
+### GPU and CUDA Setup
+For enhanced performance, it is highly recommended to install Nvidia CUDA. Follow the steps below:
+- Ensure your Nvidia drivers are up to date: https://www.nvidia.com/en-us/geforce/drivers/
+- Install the appropriate dependancies from here: https://pytorch.org/get-started/locally/
+- Validate CUDA is installed correctly by running the following and being returned a prompt ```python -c "import torch; print(torch.rand(2,3).cuda())"```
+
+Install the required Python dependencies:
 
 ```bash
 pip install -r requirements.txt
