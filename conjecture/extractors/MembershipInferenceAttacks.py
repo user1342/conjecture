@@ -36,7 +36,7 @@ class MembershipInferenceAttacks(ExtractorBaseClass):
         return top_token[0], top_prob.item()
 
     def membership_inference_attack(
-        self, original_text: str, variation_text: str, threshold: float = 0.1
+        self, original_text: str, variation_text: str
     ) -> float:
         """
         Performs a membership inference attack by comparing the model's confidence between
@@ -47,8 +47,6 @@ class MembershipInferenceAttacks(ExtractorBaseClass):
         Args:
             original_text (str): The original sentence to check.
             variation_text (str): The slight variation of the original sentence.
-            threshold (float, optional): The threshold for determining if the original text
-                                         is likely part of the training set. Defaults to 0.1.
 
         Returns:
             float: The probability difference between the original and variation text.
@@ -62,15 +60,5 @@ class MembershipInferenceAttacks(ExtractorBaseClass):
 
         # Check the difference in probabilities
         prob_difference = original_prob - variation_prob
-
-        # If the original sentence has much higher confidence than the variation
-        if prob_difference > threshold:
-            print(
-                "Membership Inference Result: The original text is likely part of the training set."
-            )
-        else:
-            print(
-                "Membership Inference Result: The original text is unlikely to be part of the training set."
-            )
 
         return prob_difference
